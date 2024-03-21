@@ -3,18 +3,27 @@
     import welcome from '$lib/images/svelte-welcome.webp';
     import welcome_fallback from '$lib/images/svelte-welcome.png';
     import { spring } from 'svelte/motion';
-    let valor = 0;
+    $: valor = 0;
     //valor.stiffness = 0.3;
     //valor.damping = 0.4;
     //valor.precision = 0.005;
     let dato;
     $: animo = spring("boca");
+    $: animo = spring("cejaI");
+    let espab = true;
+    let cerr = false;
+    $: emocion = "Indiferente";
 
-    function valorar(){
-        if(valor > 10){
-            animo = "boca-feliz";
-        }else{animo = "boca"}
+    function espabilo(){
+        espab = !espab;
+        cerr = !cerr
+        setTimeout(()=>{espab = !espab; cerr = !cerr},100)
     }
+
+
+    setInterval(espabilo,7600);
+
+
 
 </script>
 
@@ -58,17 +67,37 @@
 
     <div class="section">
         <div class="esfera  ">
-            <div class="ojoD">
-                <div class="irisD">
+
+            <div class="cejaI {valor < -60 ? "cejaI-T":
+                valor < -20 ? "cejaI-SemT":
+                valor < 20 ? "":
+                valor < 60 ? "cejaI-SemF":
+                valor <= 100 ? "cejaI-F":""
+                }"
+            >
+            </div>
+
+            <div class="cejaD {valor < -60 ? "cejaD-T":
+                valor < -20 ? "cejaD-SemT":
+                valor < 20 ? "":
+                valor < 60 ? "cejaD-SemF":
+                valor <= 100 ? "cejaD-F":""
+                }
+                "></div>
+
+            <div class="cerradoD {cerr ? "": "is-none"}"></div>
+            <div class="ojoD {espab ? "": "is-none"}">
+                <div class="irisD {espab ? "": "is-none"}">
                 </div>
             </div>
-            <div class="ojoI">
+            <div class="cerradoI {cerr ? "": "is-none"}"></div>
+            <div class="ojoI {espab ? "": "is-none"}">
                 <div class="irisI">
                 </div>
             </div>
 
             <div
-                class="{valor<0 ? "is-hidden":
+                class="{valor < 0 ? "is-hidden":
                 valor < 20 ? "boca":
                 valor < 60 ? "boca-semifeliz":
                 valor <= 100 ? "boca-feliz":""
@@ -85,29 +114,154 @@
         </div>
     </div>
 
-    <input class="desliz" type="range" bind:value={valor} on:change={valorar} min=-100 max=100 list="markers"/>
-    <datalist id="markers">
-        <option value="-25"></option>
-        <option value="-50"></option>
-        <option value="-75"></option>
-        <option value="-100"></option>
-        <option value="0"></option>
-        <option value="25"></option>
-        <option value="50"></option>
-        <option value="75"></option>
-        <option value="100"></option>
-    </datalist>
-    {valor}
+    <input class="desliz" type="range" bind:value={valor}  min=-100 max=100/>
+
+    {#if valor >= -100 && valor <= -61}
+        {@const emocion = "Triste"}
+        {#key emocion}
+            <div class="emocion">
+                {emocion}
+            </div>
+        {/key}
+    {:else if valor >= -60 && valor <= -21}
+        {@const emocion = "Frustrado"}
+        {#key emocion}
+            <div class="emocion">
+                {emocion}
+            </div>
+        {/key}
+    {:else if valor >= -20 && valor <= 20}
+        {@const emocion = "Indiferente"}
+        {#key emocion}
+            <div class="emocion">
+                {emocion}
+            </div>
+        {/key}
+    {:else if valor >= 21 && valor <= 60}
+        {@const emocion = "Emocionado"}
+        {#key emocion}
+            <div class="emocion">
+                {emocion}
+            </div>
+        {/key}
+    {:else if valor >= 61 && valor <= 100}
+        {@const emocion = "Feliz"}
+        {#key emocion}
+            <div class="emocion">
+                {emocion}
+            </div>
+        {/key}
+    {/if}
+
 </div>
 
 
 <style>
 
+    .emocion{
+
+    }
+
+    .is-none{
+        display:none;
+    }
+
+    .cerradoD{
+    border-style:solid;
+    position:absolute;
+    right:25%;
+    top:35%;
+    border-radius:50%;
+    width:3rem;
+    height:0rem;
+    border-color:#464c67;
+    }
+    .cerradoI{
+    border-style:solid;
+    position:absolute;
+    left:22%;
+    top:35%;
+    border-radius:50%;
+    width:3rem;
+    height:0rem;
+    border-color:#464c67;
+    }
+
+    .cejaI,.cejaD{
+        border-style:solid;
+        border-width:2px 0px 0px 0px;
+        width:18%;
+        height:18%;
+        border-color:#464c67;
+        position:absolute;
+        top: 20%;
+        transition: all 0.4s ease;
+        will-change:transform;
+    }
+
+    .cejaI{
+        left:22%;
+    transition: all 0.4s ease;
+    }
+    .cejaD{
+        right:25%;
+    transition: all 0.4s ease;
+    }
+
+    .cejaI-SemT{
+        transform:translateY(-10px);
+        transition: all 0.4s ease;
+        border-radius:8px;
+    }
+    .cejaI-T{
+        transform:translateY(1px);
+        transform:rotate(-30deg);
+        border-radius: 0%;
+        transition: all 0.4s ease;
+    }
+
+    .cejaI-SemF{
+        transform:translateY(-10px);
+        transition: all 0.4s ease;
+        border-radius:8px;
+    }
+    .cejaI-F{
+        width: 24%;
+        transform:translateY(-25px);
+        border-radius: 50%;
+        transition: all 0.4s ease;
+    }
+
+    
+    .cejaD-SemT{
+        transform:translateY(-10px);
+        transition: all 0.4s ease;
+        border-radius:8px;
+    }
+    .cejaD-T{
+        transform:translateY(1px);
+        transform:rotate(30deg);
+        border-radius: 0%;
+        transition: all 0.4s ease;
+    }
+
+    .cejaD-SemF{
+        transform:translateY(-10px);
+        transition: all 0.4s ease;
+        border-radius:8px;
+    }
+    .cejaD-F{
+        width: 24%;
+        transform:translateY(-25px);
+        border-radius: 50%;
+        transition: all 0.4s ease;
+    }
+
     .level{
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color:blue;
+    background-color:transparent;
     display: flex;
     flex-direction: column;
     }
@@ -119,37 +273,38 @@
     background-color:white;
     border-radius:50%;
     border-color:green;
-    border-style:solid;
+    border-style:none;
     position:relative;
     border-radius: 50%;
     background: linear-gradient(145deg, #f0f0f0, #cacaca);
-    box-shadow:  7px 7px 14px #233512,
-    -7px -7px 14px #346789;
+    box-shadow:  2px 2px 10px #233512,
+    -2px -2px 10px #346789;
 
     }
 
     .boca{
     border-bottom-style:solid;
     position:absolute;
-    left:24%;
+    left:34%;
     top:30%;
     border-radius:0%;
     border-width:4px;
-    width:9rem;
+    width:5rem;
     height:9rem;
     border-color:#464c67;
     transition: all 0.4s ease;
+    will-change:transform;
 
 
     }
     .boca2{
     border-top-style:solid;
     position:absolute;
-    left:24%;
-    top:82.7%;
+    left:34%;
+    top:82.0%;
     border-radius:0%;
     border-width:4px;
-    width:9rem;
+    width:5rem;
     height:9rem;
     border-color:#464c67;
     transition: all 0.4s ease;
@@ -172,7 +327,7 @@
     .boca-semifeliz{
     border-bottom-style:solid;
     position:absolute;
-    left:23%;
+    left:22%;
     top:36%;
     border-radius:30%;
     border-width:9px;
@@ -187,7 +342,7 @@
     .boca-semitriste{
     border-top-style:solid;
     position:absolute;
-    left:24%;
+    left:23%;
     top:76%;
     border-radius:20%;
     border-width:9px;
@@ -294,9 +449,12 @@
     -webkit-appearance: none;
     margin-top: -6px;
     }
+
+
     input[type=range]:focus::-webkit-slider-runnable-track {
     background: #6D4EB6;
     }
+
     input[type=range]::-moz-range-track {
     width: 100%;
     height: 21px;
@@ -352,6 +510,40 @@
     }
     input[type=range]:focus::-ms-fill-upper {
     background: #6D4EB6;
+    }
+
+    .irisI,.irisD{
+        will-change:transform;
+        animation: mirada 7s linear infinite ;
+
+    }
+
+    @keyframes mirada {
+        10%{
+            transform:translateY(-14px)
+        }
+        50%{
+            transform:translateY(-14px)
+        }
+        70%{
+            transform:translateY(-14px);
+            transform:translateX(-5px)
+        }
+        75%{
+            transform:translateY(-14px);
+            transform:translateX(-5px)
+        }
+        85%{
+            transform:translateY(-14px);
+            transform:translateX(5px)
+        }
+        95%{
+            transform:translateY(-14px);
+            transform:translateX(5px)
+        }
+        100%{
+            transform:translateY(0px)
+        }
     }
 
 
