@@ -1,7 +1,7 @@
 <script>
 	import "../app.scss";
-    import Header from './Header.svelte';
     import './styles.css';
+
 </script>
 
 <div class="app">
@@ -15,20 +15,20 @@
 <style>
 	.app {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		min-height: 100vh;
+        background-color:transparent;
+        backdrop-filter:blur(8px);
 	}
+        .app::-webkit-scrollbar {display: none;}
 
 	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
 		padding: 0rem;
 		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-        background-color:transparent;
+		min-width: 100%;
+		margin: 0 0;
+        backdrop-filter:blur(8px);
 	}
+    main::-webkit-scrollbar {display: none;}
 
 </style>

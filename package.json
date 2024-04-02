@@ -20,6 +20,8 @@
   },
   "type": "module",
   "dependencies": {
+    "@fontsource/dm-serif-text": "^5.0.19",
+    "@fontsource/revalia": "^5.0.19",
     "@fontsource/shrikhand": "^5.0.19"
   }
 }
