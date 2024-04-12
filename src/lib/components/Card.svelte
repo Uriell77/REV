@@ -21,7 +21,7 @@
                 >
 
                     <div class="">
-                        <figure class="image is-128x128 py-4">
+                        <figure class="image is-128x128 py-0">
                             <img src="/{publi}.jpg" class="bordeado" alt="pic"/>
                         </figure>
                     </div>

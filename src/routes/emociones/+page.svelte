@@ -1,17 +1,21 @@
 <script>
     import { spring } from 'svelte/motion';
     import { fade, fly } from 'svelte/transition';
+    import { onMount } from 'svelte';
+    import { quintOut } from 'svelte/easing';
 
+    let predica = ["mensaje1","","mensaje2","", "mensaje3","","mensaje4","","mensaje5"];
+    let modal = false;
+    let position = -2;
     $: valor = 0;
-    //valor.stiffness = 0.3;
-    //valor.damping = 0.4;
-    //valor.precision = 0.005;
-    let dato;
+    $: dato ='mierc';
     $: animo = spring("boca");
     $: animo = spring("cejaI");
     let espab = true;
     let cerr = false;
     $: emocion = "Indiferente";
+    let flag = true;
+    let mensaje= false;
 
     function espabilo(){
         espab = !espab;
@@ -19,13 +23,35 @@
         setTimeout(()=>{espab = !espab; cerr = !cerr},100)
     }
 
-
     setInterval(espabilo,7600);
-    
-    let modal = false;
+
+
+
     function modalcontrol(){
         modal = !modal;
+        mensaje = false;
+        emocion = "Indiferente";
+        position = -2;
+        console.log(position)
     }
+
+
+    onMount(()=>{
+        setInterval(()=>{
+            flag = !flag
+            position += 1;
+        }, 6000)
+
+    })
+
+    
+    function percutor(){
+            modalcontrol();
+            mensaje = !mensaje;
+            
+        }
+
+    
 
 
 </script>
@@ -50,8 +76,9 @@
         </div>
 
 
-        <div class="section">
+        <div class="section ">
             <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div class="esfera3 is-invisible"></div>
             <div class="esfera  " on:click={modalcontrol} on:keyup={modalcontrol}>
                 {#key emocion}
                 <div class="cejaI {valor < -60 ? "cejaI-T":
@@ -120,7 +147,7 @@
                 </div>
             {/key}
         {:else if valor >= -60 && valor <= -41}
-            {@const emocion = "Molesto"}
+            {@const emocion = "Enojado"}
             {#key emocion}
                 <div class="emocion impacto has-text-centered">
                     {emocion}
@@ -157,19 +184,102 @@
         {:else if valor >= 76 && valor <= 100}
             {@const emocion = "Feliz"}
             {#key emocion}
-                <div class="emocion impacto has-text-centered" >
+                <div class="emocion impacto has-text-centered" > 
                     {emocion}
                 </div>
             {/key}
         {/if}
         </div>
 
-        <input class="desliz mt-5" type="range" bind:value={valor}  min=-100 max=100/>
+        <input class="desliz mt-5" type="range" bind:value={valor}  on:change={percutor} min=-100 max=100/>
 
 
 {#key modal}
-<div class="modal mt-0 {modal ? "is-active":""}" transition:fly={{duration: 2000,x:0, y: 700, opacity: 0}}>
-  <div class="modal-background"></div>
+<div class="modal mt-0 {modal ? "is-active":""}" transition:fade={{duration: 2000, delay:1000,opacity:1, easing: quintOut}}>
+    <div class="modal-background">
+
+        <div class="is-mensaje blured {mensaje ? "is-active":"is-hidden"}" transition:fade={{duration:1500,delay: 2000, easing:quintOut}}>
+
+            <div class="section p-auto">
+                <div class="section has-text-centered p-auto">
+                    {#key flag}
+                    <p class="title impacto has-text-centered has-text-white pt-6 {flag ? "is-active":"is-hidden"}" in:fade={{duration: 1000, easing:quintOut}} out:fade={{duration: 1000,  easing:quintOut}} >
+                        {predica[position]}
+                    </p>
+                {/key}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section {mensaje ? "mensajero": ""}">
+            <div class="esfera2  " >
+                {#key emocion}
+                <div class="cejaI {valor < -60 ? "cejaI-T":
+                    valor < -20 ? "cejaI-SemT":
+                    valor < 20 ? "":
+                    valor < 60 ? "cejaI-SemF":
+                    valor <= 75 ? "cejaI-confiado":
+                    valor <= 100 ? "cejaI-F":""
+                    }"
+                >
+                </div>
+            {/key}
+                {#key emocion}
+                <div class="cejaD {valor < -60 ? "cejaD-T":
+                    valor < -20 ? "cejaD-SemT":
+                    valor < 20 ? "":
+                    valor <= 60 ? "cejaD-SemF":
+                    valor <= 75 ? "cejaD-confiado":
+                    valor <= 100 ? "cejaD-F":""
+                    }
+                    ">
+                </div>
+            {/key}
+
+                <div class="cerradoD {cerr ? "": "is-none"}"></div>
+                <div class="ojoD {espab ? "": "is-none"}">
+                    <div class="irisD {espab ? "": "is-none"}">
+                    </div>
+                </div>
+                <div class="cerradoI {cerr ? "": "is-none"}"></div>
+                <div class="ojoI {espab ? "": "is-none"}">
+                    <div class="irisI">
+                    </div>
+                </div>
+
+                {#key emocion}
+                <div
+                    class="{valor < 0 ? "is-hidden":
+                    valor < 20 ? "boca":
+                    valor < 60 ? "boca-semifeliz":
+                    valor <= 75 ? "boca-confiado":
+                    valor <= 100 ? "boca-feliz":""
+                    }"
+                >
+                </div>
+            {/key}
+                {#key emocion}
+                <div
+                    class="{valor>-1 ? "is-hidden":
+                    valor > -20 ? "boca2":
+                    valor > -60 ? "boca-semitriste":
+                    valor >= -100 ? "boca-triste":""
+                    }"
+                >
+                </div>
+            {/key}
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
   <div class="modal-content">
     <!-- Any other Bulma elements you want -->
   </div>
@@ -180,6 +290,50 @@
 {/key}
 
 <style>
+
+
+
+    .is-mensaje{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        width:95%;
+        height:60%;
+        border-radius:30px;
+    }
+
+    .mensajero{
+        width:17rem;
+        height:17rem;
+        background-color:white;
+        border-radius:50%;
+        border-color:green;
+        border-style:none;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        border-radius: 50%;
+        background: linear-gradient(145deg, #f0f0f0, #cacaca);
+        box-shadow:  2px 2px 10px #233512,
+        -2px -2px 10px #346789;
+        animation: salto 1s ease;
+        animation-delay:2s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes salto{
+        to{
+            transform:scale(50%);
+            top:0%;
+            left:0%;
+        }
+    }
+
+    .modal-background{
+        background-color: rgba(1,1,1,1) !important;
+    }
 
     .emocion2{
         font-size:40px;
@@ -324,6 +478,20 @@
         will-change:transform;
     }
 
+    .esfera3{
+        width:17rem;
+        height:17rem;
+        background-color:white;
+        border-radius:50%;
+        border-color:green;
+        border-style:none;
+        position:relative;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #f0f0f0, #cacaca);
+        box-shadow:  2px 2px 10px #233512,
+        -2px -2px 10px #346789;
+
+    }
 
     .esfera{
         width:17rem;
@@ -332,7 +500,29 @@
         border-radius:50%;
         border-color:green;
         border-style:none;
-        position:relative;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        border-radius: 50%;
+        background: linear-gradient(145deg, #f0f0f0, #cacaca);
+        box-shadow:  2px 2px 10px #233512,
+        -2px -2px 10px #346789;
+
+    }
+
+
+    .esfera2{
+        width:17rem;
+        height:17rem;
+        background-color:white;
+        border-radius:50%;
+        border-color:green;
+        border-style:none;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
         border-radius: 50%;
         background: linear-gradient(145deg, #f0f0f0, #cacaca);
         box-shadow:  2px 2px 10px #233512,

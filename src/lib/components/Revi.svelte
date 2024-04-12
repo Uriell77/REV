@@ -49,9 +49,5 @@
     .scroller::-webkit-scrollbar {display: none;}
 
 
-    .container::-webkit-scrollbar {display: none;}
-    .container{
-        width:90%;
-    }
 
 </style>
