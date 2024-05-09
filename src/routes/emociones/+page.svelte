@@ -44,14 +44,14 @@
 
     })
 
-    
-    function percutor(){
-            modalcontrol();
-            mensaje = !mensaje;
-            
-        }
 
-    
+    function percutor(){
+        modalcontrol();
+        mensaje = !mensaje;
+
+    }
+
+
 
 
 </script>
@@ -81,27 +81,27 @@
             <div class="esfera3 is-invisible"></div>
             <div class="esfera  " on:click={modalcontrol} on:keyup={modalcontrol}>
                 {#key emocion}
-                <div class="cejaI {valor < -60 ? "cejaI-T":
-                    valor < -20 ? "cejaI-SemT":
-                    valor < 20 ? "":
-                    valor < 60 ? "cejaI-SemF":
-                    valor <= 75 ? "cejaI-confiado":
-                    valor <= 100 ? "cejaI-F":""
-                    }"
-                >
-                </div>
-            {/key}
+                    <div class="cejaI {valor < -60 ? "cejaI-T":
+                        valor < -20 ? "cejaI-SemT":
+                        valor < 20 ? "":
+                        valor < 60 ? "cejaI-SemF":
+                        valor <= 75 ? "cejaI-confiado":
+                        valor <= 100 ? "cejaI-F":""
+                        }"
+                    >
+                    </div>
+                {/key}
                 {#key emocion}
-                <div class="cejaD {valor < -60 ? "cejaD-T":
-                    valor < -20 ? "cejaD-SemT":
-                    valor < 20 ? "":
-                    valor <= 60 ? "cejaD-SemF":
-                    valor <= 75 ? "cejaD-confiado":
-                    valor <= 100 ? "cejaD-F":""
-                    }
-                    ">
-                </div>
-            {/key}
+                    <div class="cejaD {valor < -60 ? "cejaD-T":
+                        valor < -20 ? "cejaD-SemT":
+                        valor < 20 ? "":
+                        valor <= 60 ? "cejaD-SemF":
+                        valor <= 75 ? "cejaD-confiado":
+                        valor <= 100 ? "cejaD-F":""
+                        }
+                        ">
+                    </div>
+                {/key}
 
                 <div class="cerradoD {cerr ? "": "is-none"}"></div>
                 <div class="ojoD {espab ? "": "is-none"}">
@@ -115,179 +115,179 @@
                 </div>
 
                 {#key emocion}
-                <div
-                    class="{valor < 0 ? "is-hidden":
-                    valor < 20 ? "boca":
-                    valor < 60 ? "boca-semifeliz":
-                    valor <= 75 ? "boca-confiado":
-                    valor <= 100 ? "boca-feliz":""
-                    }"
-                >
-                </div>
-            {/key}
+                    <div
+                        class="{valor < 0 ? "is-hidden":
+                        valor < 20 ? "boca":
+                        valor < 60 ? "boca-semifeliz":
+                        valor <= 75 ? "boca-confiado":
+                        valor <= 100 ? "boca-feliz":""
+                        }"
+                    >
+                    </div>
+                {/key}
                 {#key emocion}
-                <div
-                    class="{valor>-1 ? "is-hidden":
-                    valor > -20 ? "boca2":
-                    valor > -60 ? "boca-semitriste":
-                    valor >= -100 ? "boca-triste":""
-                    }"
-                >
-                </div>
-            {/key}
+                    <div
+                        class="{valor>-1 ? "is-hidden":
+                        valor > -20 ? "boca2":
+                        valor > -60 ? "boca-semitriste":
+                        valor >= -100 ? "boca-triste":""
+                        }"
+                    >
+                    </div>
+                {/key}
 
             </div>
         </div>
         <div class="emocion3 is-fullwidth is-flex mt-0">
-        {#if valor >= -100 && valor <= -61}
-            {@const emocion = "Triste"}
-            {#key emocion}
-                <div class="emocion impacto has-text-centered">
-                    {emocion}
-                </div>
-            {/key}
-        {:else if valor >= -60 && valor <= -41}
-            {@const emocion = "Enojado"}
-            {#key emocion}
-                <div class="emocion impacto has-text-centered">
-                    {emocion}
-                </div>
-            {/key}
-        {:else if valor >= -40 && valor <= -21}
-            {@const emocion = "Frustrado"}
-            {#key emocion}
-                <div class="emocion impacto has-text-centered">
-                    {emocion}
-                </div>
-            {/key}
-        {:else if valor >= -20 && valor <= 20}
-            {@const emocion = "Indiferente"}
-            {#key emocion}
-                <div class="emocion impacto has-text-centered">
-                    {emocion}
-                </div>
-            {/key}
-        {:else if valor >= 21 && valor <= 40}
-            {@const emocion = "Emocionado"}
-            {#key emocion}
-                <div class="emocion impacto has-text-centered">
-                    {emocion}
-                </div>
-            {/key}
-        {:else if valor >= 41 && valor <= 75}
-            {@const emocion = "Confiado"}
-            {#key emocion}
-                <div class="emocion impacto has-text-centered">
-                    {emocion}
-                </div>
-            {/key}
-        {:else if valor >= 76 && valor <= 100}
-            {@const emocion = "Feliz"}
-            {#key emocion}
-                <div class="emocion impacto has-text-centered" > 
-                    {emocion}
-                </div>
-            {/key}
-        {/if}
+            {#if valor >= -100 && valor <= -61}
+                {@const emocion = "Triste"}
+                {#key emocion}
+                    <div class="emocion impacto has-text-centered">
+                        {emocion}
+                    </div>
+                {/key}
+            {:else if valor >= -60 && valor <= -41}
+                {@const emocion = "Enojado"}
+                {#key emocion}
+                    <div class="emocion impacto has-text-centered">
+                        {emocion}
+                    </div>
+                {/key}
+            {:else if valor >= -40 && valor <= -21}
+                {@const emocion = "Frustrado"}
+                {#key emocion}
+                    <div class="emocion impacto has-text-centered">
+                        {emocion}
+                    </div>
+                {/key}
+            {:else if valor >= -20 && valor <= 20}
+                {@const emocion = "Indiferente"}
+                {#key emocion}
+                    <div class="emocion impacto has-text-centered">
+                        {emocion}
+                    </div>
+                {/key}
+            {:else if valor >= 21 && valor <= 40}
+                {@const emocion = "Emocionado"}
+                {#key emocion}
+                    <div class="emocion impacto has-text-centered">
+                        {emocion}
+                    </div>
+                {/key}
+            {:else if valor >= 41 && valor <= 75}
+                {@const emocion = "Confiado"}
+                {#key emocion}
+                    <div class="emocion impacto has-text-centered">
+                        {emocion}
+                    </div>
+                {/key}
+            {:else if valor >= 76 && valor <= 100}
+                {@const emocion = "Feliz"}
+                {#key emocion}
+                    <div class="emocion impacto has-text-centered" > 
+                        {emocion}
+                    </div>
+                {/key}
+            {/if}
         </div>
 
         <input class="desliz mt-5" type="range" bind:value={valor}  on:change={percutor} min=-100 max=100/>
 
 
-{#key modal}
-<div class="modal mt-0 {modal ? "is-active":""}" transition:fade={{duration: 2000, delay:1000,opacity:1, easing: quintOut}}>
-    <div class="modal-background">
+        {#key modal}
+            <div class="modal mt-0 {modal ? "is-active":""}" transition:fade={{duration: 2000, delay:1000,opacity:1, easing: quintOut}}>
+                <div class="modal-background">
 
-        <div class="is-mensaje blured {mensaje ? "is-active":"is-hidden"}" transition:fade={{duration:1500,delay: 2000, easing:quintOut}}>
+                    <div class="is-mensaje blured {mensaje ? "is-active":"is-hidden"}" transition:fade={{duration:1500,delay: 2000, easing:quintOut}}>
 
-            <div class="section p-auto">
-                <div class="section has-text-centered p-auto">
-                    {#key flag}
-                    <p class="title impacto has-text-centered has-text-white pt-6 {flag ? "is-active":"is-hidden"}" in:fade={{duration: 1000, easing:quintOut}} out:fade={{duration: 1000,  easing:quintOut}} >
-                        {predica[position]}
-                    </p>
-                {/key}
-                </div>
-            </div>
+                        <div class="section p-auto">
+                            <div class="section has-text-centered p-auto">
+                                {#key flag}
+                                    <p class="title impacto has-text-centered has-text-white pt-6 {flag ? "is-active":"is-hidden"}" in:fade={{duration: 1000, easing:quintOut}} out:fade={{duration: 1000,  easing:quintOut}} >
+                                        {predica[position]}
+                                    </p>
+                                {/key}
+                            </div>
+                        </div>
 
-        </div>
-
-        <div class="section {mensaje ? "mensajero": ""}">
-            <div class="esfera2  " >
-                {#key emocion}
-                <div class="cejaI {valor < -60 ? "cejaI-T":
-                    valor < -20 ? "cejaI-SemT":
-                    valor < 20 ? "":
-                    valor < 60 ? "cejaI-SemF":
-                    valor <= 75 ? "cejaI-confiado":
-                    valor <= 100 ? "cejaI-F":""
-                    }"
-                >
-                </div>
-            {/key}
-                {#key emocion}
-                <div class="cejaD {valor < -60 ? "cejaD-T":
-                    valor < -20 ? "cejaD-SemT":
-                    valor < 20 ? "":
-                    valor <= 60 ? "cejaD-SemF":
-                    valor <= 75 ? "cejaD-confiado":
-                    valor <= 100 ? "cejaD-F":""
-                    }
-                    ">
-                </div>
-            {/key}
-
-                <div class="cerradoD {cerr ? "": "is-none"}"></div>
-                <div class="ojoD {espab ? "": "is-none"}">
-                    <div class="irisD {espab ? "": "is-none"}">
                     </div>
-                </div>
-                <div class="cerradoI {cerr ? "": "is-none"}"></div>
-                <div class="ojoI {espab ? "": "is-none"}">
-                    <div class="irisI">
+
+                    <div class="section {mensaje ? "mensajero": ""}">
+                        <div class="esfera2  " >
+                            {#key emocion}
+                                <div class="cejaI {valor < -60 ? "cejaI-T":
+                                    valor < -20 ? "cejaI-SemT":
+                                    valor < 20 ? "":
+                                    valor < 60 ? "cejaI-SemF":
+                                    valor <= 75 ? "cejaI-confiado":
+                                    valor <= 100 ? "cejaI-F":""
+                                    }"
+                                >
+                                </div>
+                            {/key}
+                            {#key emocion}
+                                <div class="cejaD {valor < -60 ? "cejaD-T":
+                                    valor < -20 ? "cejaD-SemT":
+                                    valor < 20 ? "":
+                                    valor <= 60 ? "cejaD-SemF":
+                                    valor <= 75 ? "cejaD-confiado":
+                                    valor <= 100 ? "cejaD-F":""
+                                    }
+                                    ">
+                                </div>
+                            {/key}
+
+                            <div class="cerradoD {cerr ? "": "is-none"}"></div>
+                            <div class="ojoD {espab ? "": "is-none"}">
+                                <div class="irisD {espab ? "": "is-none"}">
+                                </div>
+                            </div>
+                            <div class="cerradoI {cerr ? "": "is-none"}"></div>
+                            <div class="ojoI {espab ? "": "is-none"}">
+                                <div class="irisI">
+                                </div>
+                            </div>
+
+                            {#key emocion}
+                                <div
+                                    class="{valor < 0 ? "is-hidden":
+                                    valor < 20 ? "boca":
+                                    valor < 60 ? "boca-semifeliz":
+                                    valor <= 75 ? "boca-confiado":
+                                    valor <= 100 ? "boca-feliz":""
+                                    }"
+                                >
+                                </div>
+                            {/key}
+                            {#key emocion}
+                                <div
+                                    class="{valor>-1 ? "is-hidden":
+                                    valor > -20 ? "boca2":
+                                    valor > -60 ? "boca-semitriste":
+                                    valor >= -100 ? "boca-triste":""
+                                    }"
+                                >
+                                </div>
+                            {/key}
+
+                        </div>
                     </div>
-                </div>
 
-                {#key emocion}
-                <div
-                    class="{valor < 0 ? "is-hidden":
-                    valor < 20 ? "boca":
-                    valor < 60 ? "boca-semifeliz":
-                    valor <= 75 ? "boca-confiado":
-                    valor <= 100 ? "boca-feliz":""
-                    }"
-                >
-                </div>
-            {/key}
-                {#key emocion}
-                <div
-                    class="{valor>-1 ? "is-hidden":
-                    valor > -20 ? "boca2":
-                    valor > -60 ? "boca-semitriste":
-                    valor >= -100 ? "boca-triste":""
-                    }"
-                >
-                </div>
-            {/key}
 
+
+
+
+
+
+                </div>
+                <div class="modal-content">
+                    <!-- Any other Bulma elements you want -->
+                </div>
+                <button class="modal-close is-large" aria-label="close" on:click={modalcontrol}></button>
             </div>
-        </div>
-
-
-
-
-
-
-
+        {/key}
     </div>
-  <div class="modal-content">
-    <!-- Any other Bulma elements you want -->
-  </div>
-  <button class="modal-close is-large" aria-label="close" on:click={modalcontrol}></button>
-</div>
-{/key}
-    </div>
-{/key}
+    {/key}
 
 <style>
 
@@ -426,7 +426,7 @@
         transform:translateY(-10px);
         transition: all 0.4s ease;
         border-radius:8px;
-            width: 24% !important;
+        width: 24% !important;
     }
     .cejaI-F{
         width: 24%;
@@ -452,13 +452,13 @@
         transform:translateY(-10px);
         transition: all 0.4s ease;
         border-radius:8px;
-            width: 24%;
+        width: 24%;
     }
     .cejaI-confiado{
-            width: 24% !important;
+        width: 24% !important;
     }
     .cejaD-confiado{
-            width: 24% !important;
+        width: 24% !important;
     }
     .cejaD-F{
         width: 24%;
@@ -586,11 +586,11 @@
 
     }
     .boca-confiado{
-            transform:rotate(-35deg) !important;
-            transform:translate(54px, 70px) !important;
-            border-radius:100% 1% !important;
-            width:100px !important;
-            height:30px !important;
+        transform:rotate(-35deg);
+        transform:translate(54px, 70px);
+        border-radius:100% 1%;
+        width:100px;
+        height:30px;
         border-bottom-style:solid;
         position:absolute;
         left:22%;

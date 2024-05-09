@@ -1,13 +1,12 @@
 <script>
     import "../../app.scss";
-    import '../styles.css';
 </script>
 
 <div class="app">
 
-	<level class="main2">
+	<main class="main2">
 		<slot></slot>
-	</level>
+	</main>
 
 </div>
 
@@ -16,7 +15,6 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
-        background-color: rgba(23,56,23,.9);
 	}
 
 	.main2 {
