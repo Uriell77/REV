@@ -1,4 +1,5 @@
 <script>
+    import { crossfade, scale } from 'svelte/transition';
     import { fade, fly } from 'svelte/transition';
     import { onMount } from 'svelte';
     import { quintOut } from 'svelte/easing';
@@ -10,6 +11,7 @@
     let dias =[];
     let content=[];
     $: predica = MonologoMadre;
+
 
 
     function retard(){
@@ -44,24 +46,24 @@
       {/each}
 </svelte:head>
 
-        <section class="hero is-fullheight" style="background-image:url({Found})">
-            <div class="hero-head mb-0 pb-0">
-                <div class="container">
+
+<div class="container2 m-0 p-0" style="background-image:url({Found})">
+        <div class="columns heros" >
+            <div class="column">
                     {#if ter}
                     <figure class="image is-128x128 is-fullwidth" transition:fade={{duration:1000}}>
                         <img src="{ZaLogo}" alt="logo" class="is-rounded">
                     </figure>
                 {/if}
-                </div>
             </div>
-            <div class="hero-body mt-0 pt-0" >
-                <div class="columns is-desktop is-centered is-multiline">
+            <div class="column pt-6 px-4">
                         {#each dias as dia,index}
                             <Dia hoy={dia} contenido={content[index]} variable={index}/>
                         {/each}
-                </div>
             </div>
-        </section>
+        </div>
+    </div>
+
 
 
 
@@ -70,12 +72,13 @@
 
 
 
-    .hero{
+    .container2{
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height:100%;
+    height:100vh;
+    zoom:100%;
     }
 
 
