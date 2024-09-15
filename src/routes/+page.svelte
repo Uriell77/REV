@@ -4,8 +4,8 @@
     import Nav from '$lib/components/Nav.svelte';
     import Tonera from '$lib/components/Tonera.svelte';
 
-    let publicaciones = ["emociones", "emociones2", "toma"]
-    let desc = ["que dice la biblia acerca de nuestras emociones", "emo2", "toma"]
+    let publicaciones = ["unidos","emociones", "emociones2", "toma"]
+    let desc = ["Unidos","que dice la biblia acerca de nuestras emociones", "emo2", "toma"]
 
 
 
