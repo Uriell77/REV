@@ -61,11 +61,11 @@
 
 
 <svelte:head>
-    <link rel="shortcut icon" href="https://drive.google.com/drive/folders/1RHzSGP-MBwYPQzMnIbqLh_M_NnVVAOIw" type="image/x-icon"/>
+    <link rel="shortcut icon" href="https://rev-psi.vercel.app/anillos.jpg" type="image/x-icon"/>
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Invitacion Congreso de Matrinomio" />
     <meta property="og:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
-    <meta property="og:image" content="https://rev-psi.vercel.app/anillos.webp" />
+    <meta property="og:image" content="https://rev-psi.vercel.app/anillos.jpg" />
     <meta property="og:image:width" content="828" />
     <meta property="og:image:height" content="450" />
     <meta property="og:url" content="https://rev-psi.vercel.app/unidos" />
