@@ -66,8 +66,6 @@
     <meta property="og:title" content="Invitacion Congreso de Matrinomio" />
     <meta property="og:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
     <meta property="og:image" content="https://rev-psi.vercel.app/anillos.jpg" />
-    <meta property="og:image:width" content="828" />
-    <meta property="og:image:height" content="450" />
     <meta property="og:url" content="https://rev-psi.vercel.app/unidos" />
     <meta property="og:site_name" content="Unidos" />
     <meta property="fb:app_id" content="928977633900253" />
