@@ -5,7 +5,7 @@
     import novia from "$lib/images/novia.webp";
     import novio from "$lib/images/novio.webp";
     import flyer from "$lib/images/flyer.jpg";
-    import anillos from "$lib/images/anillos.webp";
+    import anillos from "$lib/images/anillos.jpg";
     import Feliz from "$lib/images/sonidos/serfeliz.mp3";
 
     let texto = [
@@ -61,15 +61,16 @@
 
 
 <svelte:head>
+    <link rel="shortcut icon" href="https://drive.google.com/drive/folders/1RHzSGP-MBwYPQzMnIbqLh_M_NnVVAOIw" type="image/x-icon"/>
     <meta property="og:type" content="website" />
-<meta property="og:title" content="Invitacion Congreso de Matrinomio" />
-<meta property="og:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
-<meta property="og:image" content="{anillos}" />
-<meta property="og:image:width" content="828" />
-<meta property="og:image:height" content="450" />
-<meta property="og:url" content="https://escuela.it/cursos/curso-avanzado-python" />
-<meta property="og:site_name" content="Unidos" />
-<meta property="fb:app_id" content="928977633900253" />
+    <meta property="og:title" content="Invitacion Congreso de Matrinomio" />
+    <meta property="og:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
+    <meta property="og:image" content="https://drive.google.com/drive/folders/1RHzSGP-MBwYPQzMnIbqLh_M_NnVVAOIw" />
+    <meta property="og:image:width" content="828" />
+    <meta property="og:image:height" content="450" />
+    <meta property="og:url" content="https://rev-psi.vercel.app/unidos" />
+    <meta property="og:site_name" content="Unidos" />
+    <meta property="fb:app_id" content="928977633900253" />
 </svelte:head>
 
 <svelte:window bind:innerHeight={screen}/>
