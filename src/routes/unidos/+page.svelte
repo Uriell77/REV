@@ -61,6 +61,10 @@
 
 
 <svelte:head>
+    <link rel="preload" as="image" href={novia}/>
+    <link rel="preload" as="image" href={novio}/>
+    <link rel="preload" as="image" href={flyer}/>
+    <link rel="preload" as="image" href={anillos}/>
     <link rel="shortcut icon" href="https://rev-psi.vercel.app/anillos.jpg" type="image/x-icon"/>
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Invitacion Congreso de Matrinomio" />
