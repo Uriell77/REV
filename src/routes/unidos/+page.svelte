@@ -62,19 +62,27 @@
 
 <svelte:head>
     <title>Congreso de Matrimonio</title>
-    <meta charset="UTF-8">
-    <link rel="preload" as="image" href={novia}/>
-    <link rel="preload" as="image" href={novio}/>
-    <link rel="preload" as="image" href={flyer}/>
-    <link rel="preload" as="image" href={anillos}/>
-    <link rel="shortcut icon" href="https://rev-psi.vercel.app/social.jpg" type="image/x-icon"/>
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Invitacion Congreso de Matrinomio" />
     <meta property="og:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
     <meta property="og:image" content="https://rev-psi.vercel.app/social.jpg" />
     <meta property="og:url" content="https://rev-psi.vercel.app/unidos" />
     <meta property="og:site_name" content="Unidos" />
-    <meta property="fb:app_id" content="928977633900253" />
+    <meta property="fb:app_id" content="hermoso77" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:creator" content="@Uriell77" />
+  <meta property="twitter:title" content="Invitacion Congreso de Matrimonio" />
+  <meta property="twitter:url" content="https://rev-psi.vercel.app/unidos">
+  <meta property="twitter:image" content="https://rev-psi.vercel.app/social.jpg" />
+  <meta property="twitter:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
+
+
+    <link rel="preload" as="image" href={novia}/>
+    <link rel="preload" as="image" href={novio}/>
+    <link rel="preload" as="image" href={flyer}/>
+    <link rel="preload" as="image" href={anillos}/>
+    <link rel="icon" href="https://rev-psi.vercel.app/social.jpg" type="image/x-icon"/>
 </svelte:head>
 
 <svelte:window bind:innerHeight={screen}/>
