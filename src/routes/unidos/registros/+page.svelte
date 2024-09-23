@@ -24,3 +24,11 @@
           </li>
       {/each}
   </ul>
+
+
+
+  <style>
+      .box{
+      background-color:linear-gradient(black 80%, transparent);
+      }
+  </style>
