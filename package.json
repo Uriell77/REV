@@ -25,6 +25,8 @@
     "@fontsource/revalia": "^5.0.19",
     "@fontsource/shrikhand": "^5.0.19",
     "@fontsource/slackey": "^5.0.18",
-    "@fontsource/ultra": "^5.0.18"
+    "@fontsource/ultra": "^5.0.18",
+    "@supabase/supabase-js": "^2.45.4",
+    "dotenv": "^16.4.5"
   }
 }

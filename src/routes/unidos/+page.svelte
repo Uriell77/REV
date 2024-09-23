@@ -138,26 +138,26 @@
 
                 <section class="section">
 
-                    <form action="" class="">
+                    <form class="" method="POST">
 
                         <div class="fleld m-5">
                                 Nombre Completo del Esposo
                             <p class="control">
-                                    <input class="input is-rounded" type="text">
+                                    <input class="input is-rounded" type="text" name="esposo">
                             </p>
                         </div>
 
                         <div class="fleld m-5">
                                 Nombre Completo de la Esposa
                             <p class="control">
-                                    <input class="input is-rounded" type="text">
+                                    <input class="input is-rounded" type="text" name="esposa">
                             </p>
                         </div>
 
                         <div class="fleld m-5">
                             Numero de Transferencia
                             <p class="control">
-                                    <input class="input is-rounded" type="text">
+                                    <input class="input is-rounded" type="text" name="ref">
                             </p>
                         </div>
 
@@ -171,12 +171,12 @@
                 </section>
 
                 {:else}
-                <figure class="image is-3by4">
+                <p class="image is-3by4">
                     <img src="{flyer}" alt="im"/>
-                </figure>
+                </p>
 
                 <section class="section has-text-centered">
-                    <button class="button is-rounded is-link is-light" on:click={()=>{openform = true}}>
+                    <button  class="button is-rounded is-link is-light" on:click={()=>{openform = true}}>
                         Asistire
                     </button>
                 </section>
