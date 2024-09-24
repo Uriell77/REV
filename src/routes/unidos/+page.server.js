@@ -7,6 +7,7 @@ export const actions = {
         const data = await request.formData();
         const esposo = data.get('esposo');
         const esposa = data.get('esposa');
+        const iglesia = data.get('iglesia');
         const referencia = data.get('ref');
 
         console.log(esposo);
@@ -17,7 +18,7 @@ export const actions = {
         const { date, error } = await supabase
             .from('unidos')
             .insert([
-                { esposo: esposo, esposa: esposa, transferencia: referencia},
+                { esposo: esposo, esposa: esposa, iglesia:iglesia, transferencia: referencia},
             ])
             .select()
 

@@ -1,7 +1,9 @@
 <script>
     import {onMount,afterUpdate } from "svelte";
     import { spring } from 'svelte/motion';
-    import {blur,fade} from "svelte/transition";
+    import {blur,fade, scale} from "svelte/transition";
+    import { quintOut } from 'svelte/easing';
+    import zalogo from "$lib/images/zalogo.png";
     import novia from "$lib/images/novia.webp";
     import novio from "$lib/images/novio.webp";
     import flyer from "$lib/images/flyer.jpg";
@@ -53,10 +55,15 @@
     let multiplo = 5.1;
     afterUpdate(()=>{
         if(passer == 1){
-        sound.play();
-        sound.volume = 0.2;
+            sound.play();
+            sound.volume = 0.2;
         }
     })
+
+    /** @type {import('./$types').ActionData} */
+    export let form;
+
+
 </script>
 
 
@@ -71,229 +78,288 @@
     <meta property="fb:app_id" content="hermoso77" />
 
     <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:creator" content="@Uriell77" />
-  <meta property="twitter:title" content="Invitacion Congreso de Matrimonio" />
-  <meta property="twitter:url" content="https://rev-psi.vercel.app/unidos">
-  <meta property="twitter:image" content="https://rev-psi.vercel.app/social.jpg" />
-  <meta property="twitter:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
+    <meta property="twitter:creator" content="@Uriell77" />
+    <meta property="twitter:title" content="Invitacion Congreso de Matrimonio" />
+    <meta property="twitter:url" content="https://rev-psi.vercel.app/unidos">
+        <meta property="twitter:image" content="https://rev-psi.vercel.app/social.jpg" />
+        <meta property="twitter:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
 
 
-    <link rel="preload" as="image" href={novia}/>
-    <link rel="preload" as="image" href={novio}/>
-    <link rel="preload" as="image" href={flyer}/>
-    <link rel="preload" as="image" href={anillos}/>
-    <link rel="icon" href="https://rev-psi.vercel.app/social.jpg" type="image/x-icon"/>
-</svelte:head>
+        <link rel="preload" as="image" href={novia}/>
+        <link rel="preload" as="image" href={novio}/>
+        <link rel="preload" as="image" href={flyer}/>
+        <link rel="preload" as="image" href={anillos}/>
+        <link rel="icon" href="https://rev-psi.vercel.app/social.jpg" type="image/x-icon"/>
+    </svelte:head>
 
-<svelte:window bind:innerHeight={screen}/>
-<div class="fondo p-0" bind:this={scroller} >
-
-    {#key passer}
-        <section class="section ter" >
-            <img src="{novia}" alt="" class="novia" style:left="{passer*multiplo}%" transition:fade|global="{{duration:2000}}">
-            <img src="{novio}" alt="" class="novio" style:right="{passer*multiplo}%" transition:fade|global="{{duration:2000}}">
-            <div class="sombranovia" style:left="{passer*multiplo}%" transition:fade|global="{{duration:2000}}"></div>
-            <div class="sombranovio" style:right="{passer*multiplo}%" transition:fade|global="{{duration:2000}}"></div>
-        </section>
-    {/key}
-    <section class="section tar">
-        <div class="container sevillana-font has-text-weight-bold is-size-4">
-            {#key passer}
-                <div in:fade={{duration:2000, delay:2000}}>
-                    {@html texto[passer]}
-                </div>
-            {/key}
-        </div>
+    <svelte:window bind:innerHeight={screen}/>
 
 
-        {#if flagger}
-            <div></div>
+    <div class="fondo p-0" bind:this={scroller} >
+
+        <figure class="image is-96x96">
+    <img src="{zalogo}"
+                    alt="zalogo"
+                    class="succ is-rounded"
+                    width="83rem"
+                    height="83rem"
+                />
+        </figure>
+
+        {#if form?.regAnswer == "Registro exitoso"}
+            {@const tar=true}
+
+            <section class="section centrado has-text-centered" >
+                <img src="/check2.png"
+                    alt="succ"
+                    class="succ is-rounded"
+                    width="83rem"
+                    height="83rem"
+                />
+                <article class="container is-size-5 block has-text-weight-bold">
+                    Registro Exitoso<br>
+                    Dios les Bendiga<br>
+                </article>
+            </section>
+
         {:else}
             {#key passer}
-            <button class="siguiente button is-rounded is-link is-light" on:click="{pass}" in:fade={{duration:2000, delay:5000}}>
-                Siguiente
-            </button>
+                <section class="section ter" >
+                    <img src="{novia}" alt="" class="novia" style:left="{passer*multiplo}%" transition:fade|global="{{duration:2000}}" />
+                    <img src="{novio}" alt="" class="novio" style:right="{passer*multiplo}%" transition:fade|global="{{duration:2000}}" />
+                    <div class="sombranovia" style:left="{passer*multiplo}%" transition:fade|global="{{duration:2000}}"></div>
+                    <div class="sombranovio" style:right="{passer*multiplo}%" transition:fade|global="{{duration:2000}}"></div>
+                </section>
             {/key}
-        {/if}
-
-
-    </section>
-
-    <audio src="{Feliz}" type="audio/mpeg" bind:this={sound} autoplay></audio>
-
-    </div>
-
-
-
-
-    <!-- Modal -->
-    {#key flager}
-        <div class="modal {flager ? "is-active":""}" in:fade={{duration:900, delay:8000}} out:fade={{duration:900}}>
-            <div class="modal-background p-0"></div>
-
-
-            <div class="modal-content p-5">
-
-            {#if openform}
-
-                <section class="section">
-
-                    <form class="" method="POST">
-
-                        <div class="fleld m-5">
-                                Nombre Completo del Esposo
-                            <p class="control">
-                                    <input class="input is-rounded" type="text" name="esposo">
-                            </p>
+            <section class="section  mt-0 pt-0 has-text-centered">
+                <div class="container sevillana-font has-text-weight-bold is-size-4">
+                    {#key passer}
+                        <div in:fade={{duration:2000, delay:2000}}>
+                            {@html texto[passer]}
                         </div>
+                    {/key}
+                </div>
 
-                        <div class="fleld m-5">
-                                Nombre Completo de la Esposa
-                            <p class="control">
-                                    <input class="input is-rounded" type="text" name="esposa">
-                            </p>
-                        </div>
+            </section>
 
-                        <div class="fleld m-5">
-                            Numero de Transferencia
-                            <p class="control">
-                                    <input class="input is-rounded" type="text" name="ref">
-                            </p>
-                        </div>
-
-                        <section class="section has-text-centered">
-                        <button class="mt-4 button is-rounded is-link is-light">
-                            Reportar mi Asistencia
+                {#if flagger}
+                    <div></div>
+                {:else}
+                    {#key passer}
+                        <section class="section has-text-centered mt-0 pt-0">
+                        <button class="siguiente button is-rounded is-link is-light" on:click="{pass}" in:fade={{duration:2000, delay:5000}}>
+                            Siguiente
                         </button>
                         </section>
-                    </form>
+                    {/key}
+                {/if}
 
-                </section>
 
-                {:else}
-                <p class="image is-3by4">
-                    <img src="{flyer}" alt="im"/>
-                </p>
 
-                <section class="section has-text-centered">
-                    <button  class="button is-rounded is-link is-light" on:click={()=>{openform = true}}>
-                        Asistire
-                    </button>
-                </section>
+            <audio src="{Feliz}" type="audio/mpeg" bind:this={sound} autoplay></audio>
 
-            {/if}
+
+
+
+
+        <!-- Modal -->
+        {#key flager}
+            <div class="modal {flager ? "is-active":""}" in:fade={{duration:900, delay:8000}} out:fade={{duration:900}}>
+                <div class="modal-background p-0"></div>
+
+        <figure class="image is-96x96 zalogo ">
+    <img src="{zalogo}"
+                    alt="zalogo"
+                    class="succ is-rounded"
+                    width="83rem"
+                    height="83rem"
+                />
+        </figure>
+
+
+                <div class="modal-content p-5">
+
+                    {#if openform}
+
+                        <section class="section">
+
+                            <form class="" method="POST">
+
+                                <div class="fleld m-5">
+                                    Nombre Completo del Esposo
+                                    <p class="control">
+                                        <input class="input is-rounded" type="text" name="esposo" />
+                                    </p>
+                                </div>
+
+                                <div class="fleld m-5">
+                                    Nombre Completo de la Esposa
+                                    <p class="control">
+                                        <input class="input is-rounded" type="text" name="esposa" />
+                                    </p>
+                                </div>
+
+                                <div class="fleld m-5">
+                                    Iglesia
+                                    <p class="control">
+                                        <input class="input is-rounded" type="text" name="iglesia" />
+                                    </p>
+                                </div>
+
+                                <div class="fleld m-5">
+                                    Numero de Transferencia
+                                    <p class="control">
+                                        <input class="input is-rounded" type="text" name="ref" />
+                                    </p>
+                                </div>
+
+                                <section class="section has-text-centered">
+                                    <button class="mt-4 button is-rounded is-link is-light">
+                                        Reportar mi Asistencia
+                                    </button>
+                                </section>
+                            </form>
+
+                        </section>
+
+                    {:else}
+                        <p class="image is-3by4">
+                            <img src="{flyer}" alt="im"/>
+                        </p>
+
+                        <section class="section has-text-centered">
+                            <button  class="button is-rounded is-link is-light" on:click={()=>{openform = true}}>
+                                Asistire
+                            </button>
+                        </section>
+
+                    {/if}
+                </div>
+
             </div>
+        {/key}
 
-        </div>
-    {/key}
+    {/if}
 
 
+
+
+
+
+
+    </div>
 <style>
 
+    .zalogo{
+    position:absolute;;
+    left:5px;
+    top:5px;
+    z-index:100;
+    }
+
+
+    .centrado{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+    }
+
     .modal-content{
-        scroll:none;
-        width:100% !important;
-        height:100% !important;
+    scroll:none;
+    width:100% !important;
+    height:100% !important;
     }
 
     .modal-background{
-        background: hsla(277, 79%, 84%, 1) !important;
+    background: hsla(277, 79%, 84%, 1) !important;
 
-        background: linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%) !important;
+    background: linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%) !important;
 
-        background: -moz-linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%) !important;
+    background: -moz-linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%) !important;
 
-        background: -webkit-linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%) !important;
+    background: -webkit-linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%) !important;
     }
 
 
     .novia,.novio,.sombranovio,.sombranovia{
-        position: absolute;
-        z-index:20;
+    position: absolute;
+    z-index:20;
     }
 
     .novia{
-        height: 30%;
-        width: 30%;
-        top:40px;
+    height: 30%;
+    width: 30%;
+    top:90px;
     }
     .novio{
-        height: 31%;
-        width: 20%;
-        top:26px;
+    height: 31%;
+    width: 20%;
+    top:76px;
     }
 
     .sombranovia{
-        top: 30%;
-        width: 30%;
-        height:10%;
-        background-color: black;
-        border-radius:50%;
-        transform:rotatex(50deg);
-        z-index:10;
-        filter:blur(40px);
+    top: 35%;
+    width: 30%;
+    height:10%;
+    background-color: black;
+    border-radius:50%;
+    transform:rotatex(50deg);
+    z-index:10;
+    filter:blur(40px);
     }
     .sombranovio{
-        top: 30%;
-        width: 30%;
-        height:10%;
-        background-color: black;
-        border-radius:50%;
-        transform:rotatex(50deg);
-        z-index:10;
-        filter:blur(40px);
+    top: 35%;
+    width: 30%;
+    height:10%;
+    background-color: black;
+    border-radius:50%;
+    transform:rotatex(50deg);
+    z-index:10;
+    filter:blur(40px);
     }
 
 
-    .siguiente{
-        position:absolute;
-        bottom:10%;
-        left:50%; 
-        transform: translate(-50%, -50%)
-
-    }
 
     .ter{
-        height: 45% !important;
-        text-align:center;
-        width:100%;
-        margin:0 auto;
+    height: 45% !important;
+    text-align:center;
+    width:100%;
     }
     .tar{
-        height: 45% !important;
-        text-align:center;
-        width:100%;
-        margin:0 auto;
+    height: 45% !important;
+    text-align:center;
+    width:100%;
+    margin:0 auto;
     }
 
 
     .fondo{
-        background-color:white;
-        height:100vh;
-        overflow-y:scroll;
-        scroll-snap-type: y mandatory;
-        background: hsla(277, 79%, 84%, 1);
+    background-color:white;
+    height:100vh;
+    overflow-y:hidden;
+    background: hsla(277, 79%, 84%, 1);
 
-        background: linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%);
+    background: linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%);
 
-        background: -moz-linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%);
 
-        background: -webkit-linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%);
     }
 
 
     @media screen and (min-width: 600px) {
-        .ter {
-            text-align:center;
-            width:50%;
-            margin:0 auto;
-        }
+    .ter {
+    text-align:center;
+    width:50%;
+    margin:0 auto;
+    }
 
-        .tar {
-            text-align:center;
-            width:50%;
-            margin:0 auto;
-        }
+    .tar {
+    text-align:center;
+    width:50%;
+    margin:0 auto;
+    }
 
     }
 
