@@ -146,7 +146,7 @@
                     <div></div>
                 {:else}
                     {#key passer}
-                        <section class="section has-text-centered mt-0 pt-0">
+                        <section class="tar section has-text-centered mt-0 pt-0">
                         <button class="siguiente button is-rounded is-link is-light" on:click="{pass}" in:fade={{duration:2000, delay:5000}}>
                             Siguiente
                         </button>
