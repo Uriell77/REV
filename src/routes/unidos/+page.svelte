@@ -3,12 +3,13 @@
     import { spring } from 'svelte/motion';
     import {blur,fade, scale} from "svelte/transition";
     import { quintOut } from 'svelte/easing';
-    import zalogo from "$lib/images/zalogo.png";
+    import zalogo from "$lib/images/zalogo2.png";
     import novia from "$lib/images/novia.webp";
     import novio from "$lib/images/novio.webp";
     import flyer from "$lib/images/flyer.jpg";
     import anillos from "$lib/images/anillos.jpg";
     import Feliz from "$lib/images/sonidos/serfeliz.mp3";
+    import NavZar from "$lib/components/navZar.svelte";
 
     let texto = [
         "Hoy Dios tiene una palabra para tu  matrimonio",
@@ -60,8 +61,18 @@
         }
     })
 
+    function pause(){
+        sound.pause();
+    }
+
     /** @type {import('./$types').ActionData} */
     export let form;
+
+    if(form?.regAnswer =="Registro Exitoso"){
+        sound.pause();
+    }
+
+    let trans = false;
 
 
 </script>
@@ -97,17 +108,9 @@
 
     <div class="fondo p-0" bind:this={scroller} >
 
-        <figure class="image is-96x96">
-    <img src="{zalogo}"
-                    alt="zalogo"
-                    class="succ is-rounded"
-                    width="83rem"
-                    height="83rem"
-                />
-        </figure>
+        <NavZar />
 
         {#if form?.regAnswer == "Registro exitoso"}
-            {@const tar=true}
 
             <section class="section centrado has-text-centered" >
                 <img src="/check2.png"
@@ -118,9 +121,12 @@
                 />
                 <article class="container is-size-5 block has-text-weight-bold">
                     Registro Exitoso<br>
-                    Dios les Bendiga<br>
+                    Dios te Bendiga<br>
                 </article>
-            </section>
+
+                <a href="whatsapp://send?text=https://rev-psi.vercel.app/unidos"><img src="/wa.png" alt="wa" width="64px"/>
+           </a>
+    </section>
 
         {:else}
             {#key passer}
@@ -132,7 +138,7 @@
                 </section>
             {/key}
             <section class="section  mt-0 pt-0 has-text-centered">
-                <div class="container sevillana-font has-text-weight-bold is-size-4">
+                <div class="container indie-flower-regular has-text-weight-bold is-size-4">
                     {#key passer}
                         <div in:fade={{duration:2000, delay:2000}}>
                             {@html texto[passer]}
@@ -165,19 +171,11 @@
         <!-- Modal -->
         {#key flager}
             <div class="modal {flager ? "is-active":""}" in:fade={{duration:900, delay:8000}} out:fade={{duration:900}}>
-                <div class="modal-background p-0"></div>
+                <div class="modal-background">
 
-        <figure class="image is-96x96 zalogo ">
-    <img src="{zalogo}"
-                    alt="zalogo"
-                    class="succ is-rounded"
-                    width="83rem"
-                    height="83rem"
-                />
-        </figure>
+                <div class="modal-content ml-0">
 
-
-                <div class="modal-content p-5">
+                    <NavZar/>
 
                     {#if openform}
 
@@ -185,32 +183,45 @@
 
                             <form class="" method="POST">
 
-                                <div class="fleld m-5">
+                                <div class="fleld m-5 ibm-plex-serif-extralight has-text-weight-bold is-size-7">
                                     Nombre Completo del Esposo
-                                    <p class="control">
+                                    <p class="control pt-1">
                                         <input class="input is-rounded" type="text" name="esposo" />
                                     </p>
                                 </div>
 
-                                <div class="fleld m-5">
+                                <div class="fleld m-5 ibm-plex-serif-extralight has-text-weight-bold is-size-7">
                                     Nombre Completo de la Esposa
-                                    <p class="control">
+                                    <p class="control pt-1">
                                         <input class="input is-rounded" type="text" name="esposa" />
                                     </p>
                                 </div>
 
-                                <div class="fleld m-5">
+                                <div class="fleld m-5 ibm-plex-serif-extralight has-text-weight-bold is-size-7">
                                     Iglesia
-                                    <p class="control">
+                                    <p class="control pt-1">
                                         <input class="input is-rounded" type="text" name="iglesia" />
                                     </p>
                                 </div>
 
-                                <div class="fleld m-5">
-                                    Numero de Transferencia
-                                    <p class="control">
+                                <div class="fleld m-5 ibm-plex-serif-extralight has-text-weight-bold is-size-7">
+                                    Metodo de Pago
+                                    <div class="control pt-1">
+                                        <div class="select">
+                                            <select name="{trans=="Efectivo"? "ref": ""}" bind:value="{trans}">
+                                                <option></option>
+                                                <option>Efectivo</option>
+                                                <option>Transferencia</option>
+                                            </select>
+                                        </div>
+                                        {#if trans=="Transferencia" }
+                                            <br>
+                                            <p class="fleld mt-5 ibm-plex-serif-extralight has-text-weight-bold is-size-7">
+                                            Referencia Bancaria
+                                            </p>
                                         <input class="input is-rounded" type="text" name="ref" />
-                                    </p>
+                                    {/if}
+                                    </div>
                                 </div>
 
                                 <section class="section has-text-centered">
@@ -223,19 +234,18 @@
                         </section>
 
                     {:else}
-                        <p class="image is-3by4">
+                        <p class="section has-text-centered mt-0">
                             <img src="{flyer}" alt="im"/>
+                            <button  class="button is-rounded is-link is-light" on:click={()=>{openform = true}}>
+                                Asistiré
+                            </button>
                         </p>
 
-                        <section class="section has-text-centered">
-                            <button  class="button is-rounded is-link is-light" on:click={()=>{openform = true}}>
-                                Asistire
-                            </button>
-                        </section>
 
                     {/if}
                 </div>
 
+                </div>
             </div>
         {/key}
 
@@ -248,15 +258,9 @@
 
 
     </div>
+
+
 <style>
-
-    .zalogo{
-    position:absolute;;
-    left:5px;
-    top:5px;
-    z-index:100;
-    }
-
 
     .centrado{
         position:absolute;
@@ -266,12 +270,12 @@
     }
 
     .modal-content{
-    scroll:none;
     width:100% !important;
-    height:100% !important;
+    min-height:100% !important;
     }
 
     .modal-background{
+
     background: hsla(277, 79%, 84%, 1) !important;
 
     background: linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%) !important;
@@ -281,7 +285,6 @@
     background: -webkit-linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%) !important;
     }
 
-
     .novia,.novio,.sombranovio,.sombranovia{
     position: absolute;
     z-index:20;
@@ -290,16 +293,16 @@
     .novia{
     height: 30%;
     width: 30%;
-    top:90px;
+    top:120px;
     }
     .novio{
     height: 31%;
     width: 20%;
-    top:76px;
+    top:106px;
     }
 
     .sombranovia{
-    top: 35%;
+    top: 40%;
     width: 30%;
     height:10%;
     background-color: black;
@@ -309,7 +312,7 @@
     filter:blur(40px);
     }
     .sombranovio{
-    top: 35%;
+    top: 40%;
     width: 30%;
     height:10%;
     background-color: black;
@@ -360,6 +363,7 @@
     width:50%;
     margin:0 auto;
     }
+
 
     }
 
