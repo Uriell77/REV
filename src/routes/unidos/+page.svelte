@@ -10,6 +10,8 @@
     import anillos from "$lib/images/anillos.jpg";
     import Feliz from "$lib/images/sonidos/serfeliz.mp3";
     import NavZar from "$lib/components/navZar.svelte";
+    /** @type {import('./$types').ActionData} */
+    export let form;
 
     let texto = [
         "Hoy Dios tiene una palabra para tu  matrimonio",
@@ -57,22 +59,26 @@
     afterUpdate(()=>{
         if(passer == 1){
             sound.play();
-            sound.volume = 0.2;
+            sound.volume = 0.1;
         }
     })
+
 
     function pause(){
         sound.pause();
     }
 
-    /** @type {import('./$types').ActionData} */
-    export let form;
 
-    if(form?.regAnswer =="Registro Exitoso"){
-        sound.pause();
-    }
+    onMount(()=>{
+        if(form?.regAnswer == "Registro exitoso"){
+        pause();
+        }
+    })
+
 
     let trans = false;
+
+    let qrcode = false;
 
 
 </script>
@@ -112,7 +118,7 @@
 
         {#if form?.regAnswer == "Registro exitoso"}
 
-            <section class="section centrado has-text-centered" >
+            <section class="section centrado has-text-centered" in:fade={{duration:2000}}>
                 <img src="/check2.png"
                     alt="succ"
                     class="succ is-rounded"
@@ -123,9 +129,33 @@
                     Registro Exitoso<br>
                     Dios te Bendiga<br>
                 </article>
+    </section>
+    <section class="section centrado2">
+                    <p class="fleld mt-5 ibm-plex-serif-extralight has-text-weight-bold is-size-7">
+                        Compartir
+                    </p>
+                {#if qrcode}
 
-                <a href="whatsapp://send?text=https://rev-psi.vercel.app/unidos"><img src="/wa.png" alt="wa" width="64px"/>
-           </a>
+                    <section class="section has-text-centered qrmodal p-0 m-0" in:fade={{duration:2000}}>
+                    <img src="/qrcode.jpg" alt="im" height="400"/>
+                    <button class="button is-rounded is-link is-light" on:click="{()=>{qrcode =!qrcode}}">Atras</button>
+                    </section>
+                    {:else}
+                    <div class="tabs is-centered" in:fade={{duration:2000}}>
+                        <ul>
+                            <a class="" href="whatsapp://send?text=https://rev-psi.vercel.app/unidos"><img src="/logo-whatsapp.svg" alt="wa" width="42px"/>
+                            </a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://rev-psi.vercel.app/unidos"><img src="/logo-facebook.svg" alt="face" width="42px"/>
+                            </a>
+                            <a href="https://t.me/share/url?url=https://rev-psi.vercel.app/unidos&text=Congreso de Matimonio Zarza Ardiendo"><img src="/paper-plane-outline.svg" alt="tme" width="42px"/>
+                            </a>
+                            <a href="mailto:?subject=Invitacion&body=https://rev-psi.vercel.app/unidos"><img src="/mail-outline.svg" alt="mail" width="42px"/>
+                            </a>
+                            <a href="#"><img src="/qr-code-outline.svg" alt="mail" width="42px" on:click="{()=>{qrcode =!qrcode}}"/>
+                            </a>
+                        </ul>
+                    </div>
+                {/if}
     </section>
 
         {:else}
@@ -162,7 +192,7 @@
 
 
 
-            <audio src="{Feliz}" type="audio/mpeg" bind:this={sound} autoplay></audio>
+            <audio src="{Feliz}" type="audio/mpeg" bind:this={sound} ></audio>
 
 
 
@@ -262,10 +292,17 @@
 
 <style>
 
-    .centrado{
+    .centrado,.qrmodal{
         position:absolute;
-        top:50%;
+        top:40%;
         left:50%;
+        transform:translate(-50%, -50%);
+    }
+    .centrado2{
+        position:absolute;
+        top:70%;
+        left:50%;
+        width:100%;
         transform:translate(-50%, -50%);
     }
 
