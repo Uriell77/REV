@@ -8,12 +8,13 @@
     {data.unidos.length}
 </div>
 
+
   <ul>
-      {#each data.unidos as registrados}
+      {#each data.unidos as registrados,index}
           <li class="box m-1">
               <div class="is-size-7 m-0 p-0">
                   N` de Registro:
-                  {registrados.id}<br>
+                  {index+1}<br>
                   Fecha de Registro:
                   {registrados.created_at}
                   </div><hr class="m-1">

@@ -106,7 +106,7 @@
         <link rel="preload" as="image" href={novio}/>
         <link rel="preload" as="image" href={flyer}/>
         <link rel="preload" as="image" href={anillos}/>
-        <link rel="icon" href="https://rev-psi.vercel.app/social.jpg" type="image/x-icon"/>
+        <link rel="icon" href="https://rev-psi.vercel.app/social.jpg" />
     </svelte:head>
 
     <svelte:window bind:innerHeight={screen}/>
