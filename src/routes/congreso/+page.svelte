@@ -60,6 +60,29 @@
 </script>
 
 
+
+
+<svelte:head>
+    <title>Congreso de Matrimonio</title>
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Invitacion Congreso de Matrinomio" />
+    <meta property="og:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
+    <meta property="og:image" content="https://rev-psi.vercel.app/social.jpg" />
+    <meta property="og:url" content="https://rev-psi.vercel.app/unidos" />
+    <meta property="og:site_name" content="Unidos" />
+    <meta property="fb:app_id" content="hermoso77" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:creator" content="@Uriell77" />
+    <meta property="twitter:title" content="Invitacion Congreso de Matrimonio" />
+    <meta property="twitter:url" content="https://rev-psi.vercel.app/unidos">
+        <meta property="twitter:image" content="https://rev-psi.vercel.app/social.jpg" />
+        <meta property="twitter:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
+
+
+        <link rel="icon" href="https://rev-psi.vercel.app/social.jpg" />
+    </svelte:head>
+
 <section class="section p-0 base">
 <div class="container p-0">
 
