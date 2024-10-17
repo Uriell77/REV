@@ -10,7 +10,7 @@
 
 <div class="app">
 
-	<main>
+	<main class="">
 		<slot></slot>
 	</main>
 
@@ -18,8 +18,6 @@
 
 <style>
 	.app {
-		display: flex;
-		flex-direction: row;
 		min-height: 100vh;
         background-color:transparent;
         backdrop-filter:blur(8px);
@@ -28,10 +26,10 @@
 
 	main {
 		padding: 0rem;
-		width: 100%;
-		min-width: 100%;
+		min-width: 97%;
 		margin: 0 0;
         backdrop-filter:blur(8px);
+        overflow:hidden;
 	}
     main::-webkit-scrollbar {display: none;}
 
