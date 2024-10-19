@@ -9,7 +9,7 @@
   <div class="card-image">
     <figure class="image is-4by3">
       <img
-        src="{imag}"
+          src="{imag}"
         alt="Placeholder image"
       />
     </figure>

@@ -23,12 +23,12 @@
         {
             name: "Carlos y Maria Pirona",
             psi: "Obispo de la Iglesia Metodista",
-            img: "pirona"
+            img: "/pirona.png"
         },
         {
             name: "Filemon y Esposa Barrera",
             psi: "Pastor y Conferencista",
-            img: "barrera"
+            img: "/barrera.png"
         }
     ]
 
@@ -36,12 +36,12 @@
         {
             name: "Eliel y Merari Navarro",
             psi: "Pastores de la Iglesia Zarza Ardiendo",
-            img: "navarro"
+            img: "/navarro.png"
         },
         {
             name: "Jhonny y Zoli Hurtado",
             psi: "Lideres de la Red de Matrimonio en la Iglesia Zarza Ardiendo",
-            img: "hurtado"
+            img: "/hurtado.png"
         }
     ]
 
@@ -79,7 +79,7 @@
         <meta property="twitter:image" content="https://rev-psi.vercel.app/social.jpg" />
         <meta property="twitter:description" content="Te invitamos a nuestra iglesia para recibir palabra de Dios para tu matrimonio" />
 
-
+<meta property="description" content="Invitacion" />
         <link rel="icon" href="https://rev-psi.vercel.app/social.jpg" />
     </svelte:head>
 
@@ -165,7 +165,7 @@
                     <div class="columns is-centered is-mobile px-3">
                         {#each ponentes as pon}
                         <div class="column is-half pt-5">
-                            <Cardp imag="/{pon.img}.png" nombre={pon.name} psinopsis={pon.psi}/>
+                            <Cardp imag="{pon.img}" nombre={pon.name} psinopsis={pon.psi}/>
                         </div>
                     {/each}
                     </div>
@@ -183,7 +183,7 @@
                     <div class="columns is-centered is-mobile px-3">
                         {#each Anfitriones as anf}
                         <div class="column is-half pt-5">
-                            <Cardp imag="/{anf.img}.png" nombre={anf.name} psinopsis={anf.psi}/>
+                            <Cardp imag="{anf.img}" nombre={anf.name} psinopsis={anf.psi}/>
                         </div>
                     {/each}
                     </div>
@@ -199,6 +199,8 @@
                 <br/>
                 <br/>
 
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div class="button is-link is-light voy has-text-centered container pt-2 is-pulled-right" on:click="{()=>{bandera = !bandera}}"> Registrarme</div>
     <Formulario  bind:flag="{bandera}" registro={form?.regAnswer}/>
 

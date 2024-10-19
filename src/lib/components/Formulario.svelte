@@ -32,6 +32,14 @@
 
             <section class=" mt-0 pt-0">
 
+                                <div class="container is-fullhd has-text-centered mt-6 p-4 mb-0 pb-0">
+                                    <div class="is-size-5 has-text-weight-bold py-0 has-text-white">
+                                        <p class="has-text-weight-bold">Banco del Caribe</p>
+                                        <p class="has-text-weight-bold">0114</p>
+                                        <p class="has-text-weight-bold">Tlf: 04145893695</p>
+                                        <p class="has-text-weight-bold">C.I.: 4669076</p>
+                                    </div>
+                                </div>
                 <form class=" mb-6" method="POST" >
 
                     <div class="fleld m-5 ibm-plex-serif-extralight has-text-weight-bold is-size-7">
