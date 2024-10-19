@@ -27,12 +27,12 @@
 <div class="deslizador {flag? "" : "is-hidden"}" transition:fly={{duration:1000, x:0, y:800, opacity:0.5, easing:quintOut}}>
 
     <div class="centro">
-        <fieldset>
-            <legend>Reporta tu asistencia</legend>
+        <fieldset class="p-0">
+            <legend class="p-0">Reporta tu asistencia</legend>
 
-            <section class=" mt-0 pt-0">
+            <section class=" mt-0 p-0">
 
-                                <div class="container is-fullhd has-text-centered mt-6 p-4 mb-0 pb-0">
+                                <div class="container is-fullhd has-text-centered mt-0 p-1 mb-0 pb-0">
                                     <div class="is-size-5 has-text-weight-bold py-0 has-text-white">
                                         <p class="has-text-weight-bold">Banco del Caribe</p>
                                         <p class="has-text-weight-bold">0114</p>
