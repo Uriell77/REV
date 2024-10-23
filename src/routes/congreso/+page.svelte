@@ -87,7 +87,7 @@
 <div class="container p-0">
 
     <div class="columns is-centered is-mobile back mb-0">
-        <div class="column is-three-quarters-desktop is-full-mobile p-2">
+        <div class="column is-three-quarters-desktop is-full-mobile p-2"></div>
             <section class="congreso mx-2">
                 <NavZar theme="is-transparent" red="Red de Matrimonios"/>
                 <LogoC></LogoC>
@@ -233,6 +233,19 @@
         <div class="firefly"></div>
         <div class="firefly"></div>
         <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
 
 
     </div>
@@ -244,7 +257,6 @@
 
 
     </section>
-
 
 
 

@@ -8,10 +8,11 @@
 </svelte:head>
 <svelte:window use:domhandler />
 
+<div class="section base p-0">
 {#if dom}
 
     <div class="{estado}">
-        <div class="container pt-5" >
+        <div class="container pt-5 " >
 
             <!--TITULO-->
                 <div class="py-0 has-text-centered pb-0 mb-0 px-5">
@@ -230,6 +231,9 @@
 
 {/if}
 
+    </div>
+
+
 <script>
     import { spring } from 'svelte/motion';
     import { fade, fly, scale } from 'svelte/transition';
@@ -326,8 +330,6 @@
 </script>
 
 
-
-
 <style>
 
 
@@ -401,7 +403,7 @@ box-shadow: inset 20px 20px 60px #bebebe,
     background-position: center;
     background-size: cover;
     background-repeat:none;
-    height:100%;
+    height:100vh;
     width:100%;
     z-index: 0;
     }
@@ -421,7 +423,7 @@ box-shadow: inset 20px 20px 60px #bebebe,
     background-position: center;
     background-size: cover;
     background-repeat:none;
-    height:100%;
+    height:100vh;
     width:100%;
     }
     }
@@ -439,7 +441,7 @@ box-shadow: inset 20px 20px 60px #bebebe,
     background-position: center;
     background-size: cover;
     background-repeat:none;
-    height:100%;
+    height:100vh;
     width:100%;
     }
     }
@@ -458,7 +460,7 @@ box-shadow: inset 20px 20px 60px #bebebe,
     background-position: center;
     background-size: cover;
     background-repeat:none;
-    height:100%;
+    height:100vh;
     width:100%;
     }
     }
@@ -477,7 +479,7 @@ box-shadow: inset 20px 20px 60px #bebebe,
     background-position: center;
     background-size: cover;
     background-repeat:none;
-    height:100%;
+    height:100vh;
     width:100%;
     }
     }
@@ -496,7 +498,7 @@ box-shadow: inset 20px 20px 60px #bebebe,
     background-position: center;
     background-size: cover;
     background-repeat:none;
-    height:100%;
+    height:100vh;
     width:100%;
     }
     }
@@ -516,7 +518,7 @@ box-shadow: inset 20px 20px 60px #bebebe,
     background-position: center;
     background-size: cover;
     background-repeat:none;
-    height:100%;
+    height:100vh;
     width:100%;
     }
     }
@@ -535,7 +537,7 @@ box-shadow: inset 20px 20px 60px #bebebe,
     background-position: center;
     background-size: cover;
     background-repeat:none;
-    height:100%;
+    height:100vh;
     width:100%;
     }
     }
@@ -555,7 +557,7 @@ box-shadow: inset 20px 20px 60px #bebebe,
     background-position: center;
     background-size: cover;
     background-repeat:none;
-    height:100%;
+    height:100vh;
     width:100%;
     }
     }
@@ -660,5 +662,11 @@ box-shadow: inset 20px 20px 60px #bebebe,
     }
     input[type=range]:focus::-ms-fill-upper {
     background: #6D4EB6;
+    }
+
+
+    .base{
+        width:100% !important;
+        height:100% !important;
     }
 </style>

@@ -47,7 +47,7 @@
 </svelte:head>
 
 
-<div class="container2 m-0 p-3" style="background-image:url({Found})">
+ <div class="container2 m-0 p-3"> <!--style="background-image:url({Found})"> -->
         <div class="columns px-4 ret" >
             <div class="column">
                     {#if ter}
@@ -56,8 +56,8 @@
                     </figure>
                 {/if}
             </div>
-            <div class="column ter px-0 is-align-self-auto">
-                <div class="container section px-0 is-align-self-auto">
+            <div class="column ter px-0 is-align-self-auto pt-0">
+                <div class="container section px-0 is-align-self-auto pt-0">
                         {#each dias as dia,index}
                             <Dia hoy={dia} contenido={content[index]} variable={index}/>
                         {/each}
@@ -72,12 +72,8 @@
 
 <style>
 
-    .center{
-    }
-
-
     .ret{
-    height:120vh;
+    height:120dvh;
     }
 
 
@@ -88,7 +84,9 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    min-height:100vh;
+    min-height:100dvh;
+    display: grid;
+    grid-template-rows:auto 1fr auto;
     }
 
 
@@ -96,3 +94,7 @@
 
 
 </style>
+
+
+
+
