@@ -165,7 +165,7 @@
                         <block class="block ">
                             <div class="columns is-centered is-mobile px-3">
                                 {#each ponentes as pon}
-                                    <div class="column is-half pt-5">
+                                    <div class="column is-half-mobile is-4-desktop pt-5">
                                         <Cardp imag="{pon.img}" nombre={pon.name} psinopsis={pon.psi}/>
                                     </div>
                                 {/each}
@@ -183,7 +183,7 @@
                         <block class="block ">
                             <div class="columns is-centered is-mobile px-3">
                                 {#each Anfitriones as anf}
-                                    <div class="column is-half pt-5">
+                                    <div class="column is-half-mobile is-4-desktop pt-5 ">
                                         <Cardp imag="{anf.img}" nombre={anf.name} psinopsis={anf.psi}/>
                                     </div>
                                 {/each}
