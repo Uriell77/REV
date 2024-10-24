@@ -8,7 +8,7 @@
       <div class="card-image">
         <figure class="image is-4by3">
           <!-- svelte-ignore a11y-img-redundant-alt -->
-          <img src={imag} alt="Placeholder image" />
+          <img src={imag} alt="Placeholder image" loading="lazy"/>
         </figure>
       </div>
       <div class="card-content">
