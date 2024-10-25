@@ -63,6 +63,7 @@
     background-color: white;
     display: block;
     color: rgb(1, 1, 1);
+    z-index:100;
   }
 
   .card:hover {

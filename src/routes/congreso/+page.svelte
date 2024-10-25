@@ -21,28 +21,33 @@
 
     let ponentes = [
         {
-            name: "Carlos y Maria Pirona",
-            psi: "Obispo de la Iglesia Metodista",
+            name: "Obispo Carlos y Dra. Maria Pirona",
+            psi: "Directores de la Red Global Restauración Iglesia Metodista de Venezuela ",
             img: "/pirona.png"
         },
         {
-            name: "Filemon y Esposa Barrera",
-            psi: "Pastor y Conferencista",
+            name: "Rev. Filemon y Esposa Barrera",
+            psi: "Pastor y Conferencista Ministerio Internacional Impulsadores de Gracia",
             img: "/barrera.png"
-        }
+        },
     ]
 
     let Anfitriones = [
         {
             name: "Eliel y Merari Navarro",
-            psi: "Pastores de la Iglesia Zarza Ardiendo",
+            psi: "Pastores de la Iglesia Evangelica Pentecostal Zarza Ardiendo, San Fernando de Apure",
             img: "/navarro.png"
         },
         {
             name: "Jhonny y Zoli Hurtado",
-            psi: "Lideres de la Red de Matrimonio en la Iglesia Zarza Ardiendo",
+            psi: "Lideres de la Red de Matrimonio en la Iglesia Evangelica Pentecostal Zarza Ardiendo, San Fernando de Apure",
             img: "/hurtado.png"
-        }
+        },
+        {
+            name: "Alexis y Maria Mendoza",
+            psi: "Lideres de la Red de Matrimonio en la Iglesia Evangelica Pentecostal Zarza Ardiendo, San Fernando de Apure",
+            img: "/mendoza.png"
+        },
     ]
 
 
@@ -83,8 +88,8 @@
         <link rel="icon" href="https://rev-psi.vercel.app/social.jpg" />
     </svelte:head>
 
-        <div>
-    <section class="section px-0 py-0 base">
+    <div>
+        <section class="section px-0 py-0 base">
             <div class="container p-0">
 
                 <div class="columns is-centered is-multiline back mb-0">
@@ -172,18 +177,14 @@
                             </div>
                         </block>
 
-                        <br>
-                        <br>
-                        <br>
-                        <br>
 
 
                         <hr  class="has-text-white">
                         <level class="p-3 mb-2 has-text-white">Anfitriones</level>
                         <block class="block ">
-                            <div class="columns is-centered is-mobile px-3">
+                            <div class="columns is-mobile is-multiline px-3">
                                 {#each Anfitriones as anf}
-                                    <div class="column is-half-mobile is-4-desktop pt-5 ">
+                                    <div class="column is-half-mobile is-4-desktop mb-6 pt-5">
                                         <Cardp imag="{anf.img}" nombre={anf.name} psinopsis={anf.psi}/>
                                     </div>
                                 {/each}
@@ -199,6 +200,9 @@
                         <br/>
                         <br/>
                         <br/>
+
+
+
 
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
                         <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -249,15 +253,16 @@
                 <div class="firefly"></div>
 
 
+
+
             </div>
 
 
 
 
 
-
-    </section>
-        </div>
+        </section>
+    </div>
 
 
 
