@@ -26,7 +26,7 @@
             img: "/pirona.png"
         },
         {
-            name: "Rev. Filemon y Esposa Barrera",
+            name: "Rev. Filemon y Francisca Barrera",
             psi: "Pastor y Conferencista Ministerio Internacional Impulsadores de Gracia",
             img: "/barrera.png"
         },
