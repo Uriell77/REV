@@ -14,7 +14,7 @@
     let horas;
     let minutos;
     let segundos;
-    let evento = new Date("Nov 8, 2024 8:00:00").getTime();
+    let evento = new Date("Nov 8, 2024 18:00:00").getTime();
     let ahora = new Date().getTime();
     let res;
     let bandera = false;
@@ -106,6 +106,9 @@
                             <p class="is-size-4 titan-one-regular faltan mb-0">Faltan</p>
                         </div>
                         <section class="section has-text-centered container mt-1">
+                            {#if ahora >= evento }
+                            <h1 class="has-text-white concert-one-regular is-size-1 p-0 m-0">Es Hoy</h1>
+                            {:else}
                             <div class="columns is-centered is-gapless is-mobile">
                                 <div class="column">
                                     <Timer name="Dias" value="{dias<10?`0${dias}`:dias}" ></Timer>
@@ -120,6 +123,7 @@
                                     <Timer name="Segundos" value="{segundos<10?`0${segundos}`:segundos}"></Timer>
                                 </div>
                             </div>
+                        {/if}
 
 
                             <p class="has-text-white block is-size-4">
