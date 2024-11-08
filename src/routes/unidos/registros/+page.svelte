@@ -66,9 +66,11 @@
               </div>
 
               {#if registrados.estado == "Cancelado"}
+              <div class="is-hidden"></div>
                   {:else}
                       <form  method="POST" use:enhance>
                           <input class="is-hidden" type="text" value="{registrados.esposo}" name="nombre"/>
+                          <input class="input is-small is-link is-rounded" type="text" value="Efectivo" name="ref"/>
                           <input class="is-hidden" type="text" value="Cancelado" name="pagado"/>
                           <button class="button" type="submit">Pago</button>
                       </form>
@@ -106,9 +108,11 @@
                   {registrados.estado}
               </div>
               {#if registrados.estado == "Cancelado"}
+              <div class="is-hidden"></div>
                   {:else}
                       <form  method="POST" use:enhance>
                           <input class="is-hidden" type="text" value="{registrados.esposo}" name="nombre"/>
+                          <input class="input is-small is-link is-rounded" type="text" value="Efectivo" name="ref"/>
                           <input class="is-hidden" type="text" value="Cancelado" name="pagado"/>
                           <button class="button" type="submit">Pago</button>
                       </form>

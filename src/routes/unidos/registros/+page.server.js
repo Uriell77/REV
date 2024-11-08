@@ -19,15 +19,17 @@ export const actions = {
     default: async ({ cookies, request }) => {
         const data = await request.formData();
         const nombre = data.get('nombre');
+        const ref = data.get('ref');
         const pago = data.get('pagado');
 
         console.log(nombre);
+        console.log(ref);
         console.log(pago);
 
         try{
             const { date, error } = await supabase
                 .from('unidos')
-                .update({ estado: pago })
+                .update({ estado: pago, transferencia: ref})
                 .eq('esposo', nombre)
 
             return {regAnswer: "Registro exitoso"}
