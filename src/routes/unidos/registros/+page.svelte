@@ -6,6 +6,7 @@
     $: completo = data.unidos;
     let result;
     let cancelados;
+    let sel;
 
     onMount(async ()=>{
         cancelados = await completo.filter((item)=>item.estado == "Cancelado") 
@@ -16,6 +17,8 @@
     function ter(){
         console.log("ter")
     }
+
+   
 
 </script>
 
@@ -70,7 +73,7 @@
                   {:else}
                       <form  method="POST" use:enhance>
                           <input class="is-hidden" type="text" value="{registrados.esposo}" name="nombre"/>
-                          <input class="input is-small is-link is-rounded" type="text" value="Efectivo" name="ref"/>
+                          <input class="input is-small is-link is-rounded" type="text" value="Efectivo" name="ref" on:focus={(event)=>{event.target.select()}} bind:this="{sel}"/>
                           <input class="is-hidden" type="text" value="Cancelado" name="pagado"/>
                           <button class="button" type="submit">Pago</button>
                       </form>
